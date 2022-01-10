@@ -1,0 +1,8 @@
+<h2>Add  Movies</h2>
+<form action="/movies" method="post"> 
+ <!-- enctype="multipart/form-data" we dont need this attr coz file is sended as a JSON string with help of filepond -->
+    <!--enctype="multipart/form-data" this tells our server that this form could send multipart data including file -->
+    <%- include('_form_field.ejs') %>
+    <a href="/movies">Cancel</a>
+    <button type="submit">Create</button>
+</form>

@@ -1,0 +1,14 @@
+<h2>Search Directors</h2>
+<form action="/directors" method="get">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" value="<%= searchOption.name %>">
+    <button type="submit" >Search</button>
+</form>
+<% director.forEach(director => { %>
+    <div><%= director.name %></div>
+    <a href="/directors/<%= director.id %>">View</a>
+    <a href="/directors/<%= director.id %>/edit">Edit</a>
+    <%- include('../partials/deleteForm',{ url : `/directors/${director.id}`}) %>
+
+<% }); %>
+

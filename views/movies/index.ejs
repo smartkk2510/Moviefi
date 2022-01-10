@@ -1,0 +1,21 @@
+<h2>Search Movies</h2>
+<form action="/movies" method="get">
+    <div>
+        <label for="name">Title</label>
+         <input type="text" name="title" id="name" value="<%= searchOption.title %>">
+    </div>
+   <div>
+    <label for="name">Release date</label>
+    <input type="date" name="releaseDate" id="name" value="<%= searchOption.releaseDate %>">
+   </div>
+    <button type="submit" >Search</button>
+</form>
+<div>
+    <% movies.forEach((movie) => { %>
+        <div style="display: inline-block;">
+            <img style="margin:3px 10px 0;" src="<%= movie.posterImagePath %>" height="150" width="100"  alt="img">
+            <h3 style="margin:0 10px 3px;"> <%=movie.name %></h3>
+        </div>
+       
+    <% }); %>  
+</div>

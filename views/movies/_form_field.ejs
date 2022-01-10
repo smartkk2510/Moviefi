@@ -1,0 +1,41 @@
+<div>
+    <label for="movie_name">Title</label>
+    <input type="text" id="movie_name" name="name" value="<%= movie.name %> " autocomplete="false">
+</div>
+
+<div>
+<label for="director">Director</label>
+<select name="director" id="director">
+    <% directors.forEach(director => { %>
+
+      <% if(director.id == movie.director)  { %>
+     <option selected value="<%= director.id %>" > <%= director.name %> </option>
+     <% } else { %>
+        <option  value="<%= director.id %>"> <%= director.name %> </option>
+     <% } %>   
+
+   <% }); %>
+</select>
+</div>
+
+<div>
+    <label for="releaseDate">Release Date</label>
+    <input type="date" name="releaseDate" id="releaseDate" value="<% movie.releaseDate == null ? '' : 
+    movie.releaseDate.toISOString().split('T')[0]%>">
+    <!-- converting to ISO format and spliting time form string  -->
+</div>
+
+<div>
+    <label for="duration">Duration</label>
+    <input type="number" id="duration" min="1" name="duration" value="<% movie.duratio %>">
+</div>
+
+<div>
+    <label for="poster">Poster</label>
+    <input type="file" id="poster" class="filepond"  name="poster" >
+</div>
+
+<div>
+    <label for="description">Description</label>
+   <textarea name="description" id="description" cols="30" rows="10"><%= movie.description %> </textarea>
+</div>
