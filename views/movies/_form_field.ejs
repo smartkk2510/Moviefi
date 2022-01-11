@@ -21,13 +21,13 @@
 <div>
     <label for="releaseDate">Release Date</label>
     <input type="date" name="releaseDate" id="releaseDate" value="<% movie.releaseDate == null ? '' : 
-    movie.releaseDate.toISOString().split('T')[0]%>">
+    movie.releaseDate%>">
     <!-- converting to ISO format and spliting time form string  -->
 </div>
 
 <div>
     <label for="duration">Duration</label>
-    <input type="number" id="duration" min="1" name="duration" value="<% movie.duratio %>">
+    <input type="number" id="duration" min="1" name="duration" value="<% movie.duration %>">
 </div>
 
 <div>

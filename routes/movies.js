@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Movie = require('../model/movie');
 const Director = require('../model/director');
+const { redirect } = require('express/lib/response');
 //const fs = require('fs');
 //const path = require('path'); //path is an builtin node.js library
 //const uploadPath = path.join('public',Movie.posterImageBasePath); // join path of  public folder with posterImageBasePath
@@ -66,9 +67,8 @@ router.post("/"  , async (req,res)=>{
  // console.log(movie)
   try{
         const newMovie = await movie.save();
-          // res.redirect(`movies/${newMovies.id}`);
-         //  console.log(newMovie)
-        res.redirect('movies');
+          res.redirect(`movies/${newMovies.id}`);
+         
   }catch(err){
       console.log(err)
      // console.log(movie.posterImageName);
@@ -110,4 +110,92 @@ function savePoster(movie, posterEncoded){
     movie.posterImageType = poster.type;
  }
 }
+
+// Show Movie route
+router.get('/:id',async (req,res) => {
+  try{
+   // console.log(req.params.id)
+       const movie = await Movie.findById(req.params.id).populate('director').exec();
+      
+       //populate() gets the value associated with director which is reference to another document
+      res.render('movies/show',{movie : movie})
+
+  }
+  catch{
+    res.redirect('/')
+  }
+})
+
+
+// Edit Movie route
+router.get("/:id/edit",async (req,res)=>{
+ try{
+     const movie = await Movie.findById(req.params.id);
+     renderEditPage(res,movie)
+ }
+ catch{
+           res.redirect('/')
+ }
+
+})
+
+async function renderEditPage(res,movie,hasError = false){
+  try{
+    const director = await Director.find({});
+    const params ={ directors : director,movie : movie}
+    if(hasError){
+      params.errorMessage = 'Error Creating Book' //like this you can add new keys to the existing object
+    }
+    res.render('movies/edit',params)
+
+      }catch{
+    res.redirect('movies')
+}
+}
+
+router.put("/:id"  , async (req,res)=>{
+  
+let movie
+
+try{
+      movie = await Movie.findById(req.params.id);
+      
+    movie.name= req.body.name;
+    movie.director=req.body.director;
+    movie.releaseDate= new Date(req.body.releaseDate);
+    movie.duration=req.body.duration;
+    movie.description=req.body.description;
+
+    if(req.body.poster != null && req.body.poster !== ''){
+      savePoster(movie,req.body.poster)
+    }
+    await movie.save()
+    res.redirect(`/movies/${movie.id}`);
+       
+}catch(err){
+  console.log(err)
+    if(movie != null){
+      renderEditPage(res,movie,true)
+    }else{
+      redirect('/')
+    }
+
+}
+})
+
+router.delete('/:id',async(req,res) => {
+  let movie
+  try{
+      movie = await Movie.findById(req.params.id)  ;
+      await movie.remove();
+      res.redirect('/movies')
+    
+  }catch{
+    if(movie != null){
+      res.render('movies/show',{movie : movie,errorMessage : 'Could not remove Movie'})
+    }else{
+      res.redirect('/')
+    }
+  }
+})
 module.exports = router;
