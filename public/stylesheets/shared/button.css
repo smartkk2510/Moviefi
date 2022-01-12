@@ -1,0 +1,43 @@
+ .btn{
+     border : 1px solid black;
+     border-radius: .5rem;
+     padding: .5rem 1.2rem;
+     font-size: 1.2rem;
+     font-family: 'Gotham Rounded';
+     cursor: pointer;
+     text-decoration: none;
+     text-align: center;
+ }
+
+ .btn-primary{
+     color: hsl(200,100%,83%);;
+     background-color: hsl(200,100%,20%);
+ }
+
+ .btn-danger{
+    color: hsl(200,100%,83%);
+    background-color: rgb(220, 40, 40);
+ }
+
+ .btn-primary:hover{
+     color: black;
+     background-color: hsl(200,100%,73%);
+ }
+
+ .btn-danger:hover{
+    color: black;
+    background-color: rgb(220, 25, 25);
+ }
+
+ .btn-row{
+    display: flex;
+    align-items: flex-start; 
+ }
+
+ .btn-row > *{
+     margin-left: 1rem;
+ }
+
+ .btn-row > *:first-child{
+    margin-left: 0;
+}

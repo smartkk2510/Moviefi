@@ -10,7 +10,7 @@
     href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
     rel="stylesheet"
     />
-
+     <link rel="stylesheet" href="/stylesheets/main.css">
       <!-- FilePond brings simple and powerful file uploads to JavaScript apps it include drag and drop -->
   <script defer src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
   <script defer src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
@@ -20,10 +20,12 @@
     <title>MovieFY</title>
 </head>
 <body>
-  <%- include('../partials/header.ejs') %> 
-  <%- include('../partials/errorMessage.ejs') %>
-  <%- body %> 
-
-
+    <div class="container">
+      <%- include('../partials/header.ejs') %>
+      <div class="inner-container">
+        <%- include('../partials/errorMessage.ejs') %>
+        <%- body %> 
+      </div> 
+    </div>
 </body>
 </html>

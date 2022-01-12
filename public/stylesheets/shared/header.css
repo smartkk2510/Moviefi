@@ -1,0 +1,38 @@
+
+
+.header-title{
+    color: var(--color-text-light);
+    text-decoration: none;
+    font-size: 3rem ;
+    font-weight: bold;
+}
+
+.header-nav{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5rem;
+}
+
+.header-title ul{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.header-link{
+    text-decoration: none;
+    color: var(--color-text-light);
+    font-weight: lighter;
+    padding: 1rem;
+}
+
+.header-link:hover{
+    color: white;
+}
+
+.header-title:hover{
+    color: white;
+}

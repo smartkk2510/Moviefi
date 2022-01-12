@@ -6,9 +6,10 @@
 </form>
 <% director.forEach(director => { %>
     <div><%= director.name %></div>
-    <a href="/directors/<%= director.id %>">View</a>
-    <a href="/directors/<%= director.id %>/edit">Edit</a>
+    <div class="btn-row">
+    <a class="btn btn-primary" href="/directors/<%= director.id %>">View</a>
+    <a class="btn btn-primary" href="/directors/<%= director.id %>/edit">Edit</a>
     <%- include('../partials/deleteForm',{ url : `/directors/${director.id}`}) %>
-
+    </div>
 <% }); %>
 
