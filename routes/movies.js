@@ -67,7 +67,7 @@ router.post("/"  , async (req,res)=>{
  // console.log(movie)
   try{
         const newMovie = await movie.save();
-          res.redirect(`movies/${newMovies.id}`);
+          res.redirect(`movies/${movie.id}`);
          
   }catch(err){
       console.log(err)

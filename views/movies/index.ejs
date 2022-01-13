@@ -1,21 +1,28 @@
 <h2>Search Movies</h2>
 <form action="/movies" method="get">
-    <div>
-        <label for="name">Title</label>
-         <input type="text" name="title" id="name" value="<%= searchOption.title %>">
+    <div class="form-row">
+        
+            <div class="form-item">
+                <label for="name">Title</label>
+                 <input type="text" name="title" id="name" value="<%= searchOption.title %>">
+            </div>
+           <div class="form-item">
+            <label for="name">Release date</label>
+            <input type="date" name="releaseDate" id="name" value="<%= searchOption.releaseDate %>">
+           </div>
+        
     </div>
-   <div>
-    <label for="name">Release date</label>
-    <input type="date" name="releaseDate" id="name" value="<%= searchOption.releaseDate %>">
-   </div>
-    <button type="submit" >Search</button>
+<div class="form-row form-row-end">
+    <button class="btn btn-primary" type="submit" >Search</button>
+</div>
+   
 </form>
 <div>
     <% movies.forEach((movie) => { %>
         <a href="/movies/<%= movie.id %>">
         <div style="display: inline-block;">
             <img style="margin:3px 10px 0;" src="<%= movie.posterImagePath %>" height="150" width="100"  alt="img">
-            <h3 style="margin:0 10px 3px;"> <%=movie.name %></h3>
+            <h3 class="movie-title" style="margin:0 10px 3px;"> <%=movie.name %></h3>
         </div>
        </a>
     <% }); %>  

@@ -10,8 +10,9 @@
  }
 
  .btn-primary{
-     color: hsl(200,100%,83%);;
-     background-color: hsl(200,100%,20%);
+    
+    color: black;
+     background-color: hsl(200,100%,73%);
  }
 
  .btn-danger{
@@ -20,8 +21,9 @@
  }
 
  .btn-primary:hover{
-     color: black;
-     background-color: hsl(200,100%,73%);
+     
+     color: hsl(200,100%,83%);;
+     background-color: hsl(200,100%,20%);
  }
 
  .btn-danger:hover{

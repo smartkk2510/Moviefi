@@ -1,41 +1,53 @@
 <div>
-    <label for="movie_name">Title</label>
-    <input type="text" id="movie_name" name="name" value="<%= movie.name %> " autocomplete="false">
+<div class="form-row">
+    <div class="form-item">
+        <label for="movie_name">Title</label>
+        <input type="text" id="movie_name" name="name" value="<%= movie.name %> " autocomplete="false">
+    </div>
+    
+    <div class="form-item">
+    <label for="director">Director</label>
+    <select name="director" id="director">
+        <% directors.forEach(director => { %>
+    
+          <% if(director.id == movie.director)  { %>
+         <option selected value="<%= director.id %>" > <%= director.name %> </option>
+         <% } else { %>
+            <option  value="<%= director.id %>"> <%= director.name %> </option>
+         <% } %>   
+    
+       <% }); %>
+    </select>
+    </div>
 </div>
 
-<div>
-<label for="director">Director</label>
-<select name="director" id="director">
-    <% directors.forEach(director => { %>
+<div class="form-row"> 
+    <div class="form-item">
+        <label for="releaseDate">Release Date</label>
+        <input type="date" name="releaseDate" id="releaseDate" value="<% movie.releaseDate == null ? '' : 
+        movie.releaseDate%>">
+        <!-- converting to ISO format and spliting time form string  -->
+    </div>
 
-      <% if(director.id == movie.director)  { %>
-     <option selected value="<%= director.id %>" > <%= director.name %> </option>
-     <% } else { %>
-        <option  value="<%= director.id %>"> <%= director.name %> </option>
-     <% } %>   
-
-   <% }); %>
-</select>
+    <div class="form-item">
+        <label for="duration">Duration</label>
+        <input type="number" id="duration" min="1" name="duration" value="<% movie.duration %>">
+    </div>
 </div>
 
-<div>
-    <label for="releaseDate">Release Date</label>
-    <input type="date" name="releaseDate" id="releaseDate" value="<% movie.releaseDate == null ? '' : 
-    movie.releaseDate%>">
-    <!-- converting to ISO format and spliting time form string  -->
+<div class="form-row">
+
+    <div class="form-item form-item-no-grow">
+        <label for="poster">Poster</label>
+        <input type="file" id="poster" class="filepond"  name="poster" >
+    </div>
+    
+    <div class="form-item">
+        <label for="description">Description</label>
+       <textarea name="description" id="description" cols="30" rows="10"><%= movie.description %> </textarea>
+    </div>
+</div>
 </div>
 
-<div>
-    <label for="duration">Duration</label>
-    <input type="number" id="duration" min="1" name="duration" value="<% movie.duration %>">
-</div>
 
-<div>
-    <label for="poster">Poster</label>
-    <input type="file" id="poster" class="filepond"  name="poster" >
-</div>
 
-<div>
-    <label for="description">Description</label>
-   <textarea name="description" id="description" cols="30" rows="10"><%= movie.description %> </textarea>
-</div>
