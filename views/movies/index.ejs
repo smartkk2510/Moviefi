@@ -18,12 +18,6 @@
    
 </form>
 <div>
-    <% movies.forEach((movie) => { %>
-        <a href="/movies/<%= movie.id %>">
-        <div style="display: inline-block;">
-            <img style="margin:3px 10px 0;" src="<%= movie.posterImagePath %>" height="150" width="100"  alt="img">
-            <h3 class="movie-title" style="margin:0 10px 3px;"> <%=movie.name %></h3>
-        </div>
-       </a>
-    <% }); %>  
+    <%- include('../partials/movieGrid',{ movies:movies}) %> 
+
 </div>

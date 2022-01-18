@@ -1,10 +1,23 @@
 <h2><%= movie.name %></h2>
-<img width="100" height="150" src="<%= movie.posterImagePath %>" alt="poster">
-<div>Director: <%= movie.director.name %></div>
-<div>Release Daye: <%= movie.releaseDate.toDateString() %></div>
-<div>Duration: <%= movie.duration %></div>
-<div>Description: <%= movie. description %></div>
+<div class="movie-detail">
+    <div>
+        <img class="movie-cover" src="<%= movie.posterImagePath %>" alt="poster">
+        <div class="movie-detail-btn-grid">
+            <a class="btn btn-primary" href="/movies/<%= movie.id %>/edit">Edit</a>
+            <%- include('../partials/deleteForm',{url: `/movies/${movie.id}`}) %>
+            <a class="btn btn-primary movie-details-director-button" href="/directors/<%= movie.director.id %>">View Director</a>
+        </div>
+    </div>
+    <div class="movie-details-grid">
+        <div class="movie-details-label">Director:</div>
+       <div><%= movie.director.name %></div>
+        <div class="movie-details-label">Release Date:</div>
+        <div> <%= movie.releaseDate.toDateString() %></div>
+        <div class="movie-details-label">Duration:</div>
+        <div><%= movie.duration %></div>
+        <div class="movie-details-label">Description:</div>
+        <div>Description: <%= movie. description %></div>
 
-<a href="/movies/<%= movie.id %>/edit">Edit</a>
-<%- include('../partials/deleteForm',{url: `/movies/${movie.id}`}) %>
-<a href="/directors/<%= movie.director.id %>">View Director</a>
+  </div>
+  
+</div>

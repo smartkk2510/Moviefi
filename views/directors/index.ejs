@@ -11,8 +11,8 @@
     </div>
 </form>
 <% director.forEach(director => { %>
-    <div >
-        <div><%= director.name %></div>
+    <div class="director-row">
+        <div class="director-name"><%= director.name %></div>
         <div class="btn-row ">
         <a class="btn btn-primary" href="/directors/<%= director.id %>">View</a>
         <a class="btn btn-primary" href="/directors/<%= director.id %>/edit">Edit</a>

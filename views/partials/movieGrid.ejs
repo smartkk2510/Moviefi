@@ -1,0 +1,15 @@
+<% movieCoverClass = locals.large ? 'movie-cover-large' : '' %>
+<% movieGridClass = locals.large ? 'movie-grid-large' : '' %>
+
+<div class="movie-grid <%=  movieGridClass  %> ">
+    <% movies.forEach((movie) => { %>
+        <a href="/movies/<%= movie.id %>">
+        <div style="display: inline-block;">
+            <img class="movie-cover <%=  movieCoverClass  %> " src="<%= movie.posterImagePath %>"   alt="img">
+            <h3 class="movie-title" style="margin:0 10px 3px;"> <%=movie.name %></h3>
+        </div>
+       </a>
+    <% }); %> 
+
+</div>
+ 
